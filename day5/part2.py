@@ -26,8 +26,7 @@ def main():
     moves = tmp_moves
 
     for move in moves:
-        for _ in range(move[0]):
-            stacks = modif_stack(stacks, move[1] - 1, move[2] - 1)
+        stacks = modif_stack(stacks, move[0], move[1] - 1, move[2] - 1)
 
     for i in stacks:
         # print last elemnet of i
@@ -38,10 +37,10 @@ def main():
 
 
 
-def modif_stack(stacks,  i, j):
+def modif_stack(stacks, n_move,  i, j):
     # print(stacks, i , j)
-
-    stacks[j].append(stacks[i].pop())
+    stacks[j] += stacks[i][ - n_move:]
+    del stacks[i][-n_move:]
     return stacks
 
 main()
